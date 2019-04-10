@@ -9,7 +9,7 @@ public class BeanLoadApplication implements LoadApplication {
     public void run(Class<?> clazz) throws Exception {
         String beanLoadImp = System.getProperty("ann.bean.load.imp");
         if (beanLoadImp==null){
-            beanLoadImp = "com.github.ncdhz.cat.tool.core.AnnBeanLoadImp";
+            beanLoadImp = "com.github.ncdhz.cat.core.AnnBeanLoadImp";
             System.setProperty("ann.bean.load.imp",beanLoadImp);
         }
         ClassLoader classLoader = clazz.getClassLoader();

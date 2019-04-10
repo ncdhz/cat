@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
  * 工具包的引导程序
  * @author majunlong
  */
-public class ToolBootstrap {
+public class CatBootstrap {
 
 
-    private static Logger logger = LoggerFactory.getLogger(ToolBootstrap.class);
+    private static Logger logger = LoggerFactory.getLogger(CatBootstrap.class);
     /**
      *  此方法会先加载  PathLoadApplication 用于整理所有需要处理的文件路径
      *  在加载 RunMethodLoadApplication 用于处理所有需要运行的方法
@@ -26,17 +26,17 @@ public class ToolBootstrap {
         }
         String pathLoad = System.getProperty("ann.path.load");
         if (pathLoad==null){
-            pathLoad = "com.github.ncdhz.cat.tool.core.PathLoadApplication";
+            pathLoad = "com.github.ncdhz.cat.core.PathLoadApplication";
             System.setProperty("ann.path.load",pathLoad);
         }
         String runMethod = System.getProperty("ann.run.method.load");
         if(runMethod==null){
-            runMethod = "com.github.ncdhz.cat.tool.core.RunMethodLoadApplication";
+            runMethod = "com.github.ncdhz.cat.core.RunMethodLoadApplication";
             System.setProperty("ann.run.method.load",runMethod);
         }
         String beanLoad = System.getProperty("ann.bean.load");
         if (beanLoad==null){
-            beanLoad = "com.github.ncdhz.cat.tool.core.BeanLoadApplication";
+            beanLoad = "com.github.ncdhz.cat.core.BeanLoadApplication";
             System.setProperty("ann.bean.load",beanLoad);
         }
         ClassLoader classLoader = clazz.getClassLoader();
@@ -47,7 +47,7 @@ public class ToolBootstrap {
             Class<?> pClass = classLoader.loadClass(pathLoad);
             LoadApplication pathLoadObj = (LoadApplication)pClass.newInstance();
             pathLoadObj.run(clazz);
-            pathLoadObj.run(ToolBootstrap.class);
+            pathLoadObj.run(CatBootstrap.class);
             logger.debug("Tool cat path loading end");
             logger.debug("Start tool cat bean loading");
             Class<?> bClass = classLoader.loadClass(beanLoad);
@@ -57,7 +57,7 @@ public class ToolBootstrap {
             logger.debug("Start tool cat run method function loading");
             Class<?> rClass = classLoader.loadClass(runMethod);
             LoadApplication  rClassObj = (LoadApplication)rClass.newInstance();
-            rClassObj.run(ToolBootstrap.class);
+            rClassObj.run(CatBootstrap.class);
             logger.debug("Tool cat run method function loading end");
             long timeE = System.nanoTime();
             logger.info("Tool cat startup takes {} nano time",timeE-timeS);

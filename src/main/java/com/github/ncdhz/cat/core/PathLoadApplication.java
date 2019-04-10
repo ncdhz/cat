@@ -21,7 +21,7 @@ public class PathLoadApplication implements LoadApplication {
     public  void run(Class<?> clazz) throws Exception {
         logger.debug("{} path parsing begins",clazz);
         String path = clazz.getResource("").getPath();
-        String packagePath = clazz.getPackage().getName();
+        String packagePath = clazz.getPackage()==null?"":clazz.getPackage().getName();
         loadCatScanPath(clazz);
         loadPath(path,packagePath);
         logger.debug("{} Path parsing completed",clazz);

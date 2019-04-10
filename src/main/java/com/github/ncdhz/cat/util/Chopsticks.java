@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author majunlong
- * util.container 用于指定容器的类 默认为 com.github.ncdhz.cat.tool.util.Tableware
+ * util.container 用于指定容器的类 默认为 com.github.ncdhz.cat.util.Tableware
  */
 public abstract class Chopsticks {
 
@@ -62,7 +62,7 @@ public abstract class Chopsticks {
             if (chopsticks==null){
                 String container = System.getProperty("util.container");
                 if (container==null){
-                    container = "com.github.ncdhz.cat.tool.util.Tableware";
+                    container = "com.github.ncdhz.cat.util.Tableware";
                     System.setProperty("util.container",container);
                 }
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -95,7 +95,7 @@ public abstract class Chopsticks {
 
         private final static String CLASS_END_NAME = ".class";
 
-        private List<String> name = new ArrayList<>();
+        private List<String> name = new ArrayList<String>();
 
         private Object obj;
 

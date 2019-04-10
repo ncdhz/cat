@@ -21,6 +21,24 @@
 
 ### @RunMethod
 此注解用于运行一个方法，也就是单纯的执行含有此注解的方法，返回值默认会丢弃。
+(此注解能运行的前提：cat容器中必须含有方法所处的类)
+可以通过@Bean或者@Component来加载类
+```$xslt
+import com.github.ncdhz.cat.CatBootstrap;
+import com.github.ncdhz.cat.annotation.Component;
+import com.github.ncdhz.cat.annotation.RunMethod;
+
+@Component
+public class RunMethodTest {
+    public static void main(String[] args){
+        CatBootstrap.run(RunMethodTest.class);
+    }
+    @RunMethod
+    protected void testRunMethod(){
+        System.out.println("I'm RunMethod");
+    }
+}
+```
 
 
 

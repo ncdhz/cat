@@ -85,8 +85,11 @@ public class FilePath{
             logger.warn("[{}] Path error",path);
             return;
         }
-        String classPath = packagePath+"."+path.getName().replace(CLASS_END_NAME,"");
-        paths.add(classPath);
+        StringBuilder classPath = new StringBuilder();
+        classPath.append(packagePath);
+        classPath.append("".equals(packagePath) ? "" : ".");
+        classPath.append(path.getName().replace(CLASS_END_NAME,""));
+        paths.add(classPath.toString());
         logger.debug("[{}] Path Added Successfully",classPath);
     }
 
