@@ -1,4 +1,4 @@
-package com.github.ncdhz.cat.tool.annotation;
+package com.github.ncdhz.cat.annotation;
 
 import java.lang.annotation.*;
 

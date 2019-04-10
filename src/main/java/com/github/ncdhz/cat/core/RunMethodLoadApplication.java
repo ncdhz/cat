@@ -1,10 +1,10 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
 
-import com.github.ncdhz.cat.tool.annotation.RunMethod;
-import com.github.ncdhz.cat.tool.util.Chopsticks;
-import com.github.ncdhz.cat.tool.util.ChopsticksInitException;
-import com.github.ncdhz.cat.tool.util.FilePath;
+import com.github.ncdhz.cat.annotation.RunMethod;
+import com.github.ncdhz.cat.util.Chopsticks;
+import com.github.ncdhz.cat.util.ChopsticksInitException;
+import com.github.ncdhz.cat.util.FilePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

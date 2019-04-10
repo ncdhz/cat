@@ -1,13 +1,13 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
 
-import com.github.ncdhz.cat.tool.annotation.Bean;
-import com.github.ncdhz.cat.tool.annotation.Component;
-import com.github.ncdhz.cat.tool.annotation.Primary;
-import com.github.ncdhz.cat.tool.annotation.Resource;
-import com.github.ncdhz.cat.tool.util.Chopsticks;
-import com.github.ncdhz.cat.tool.util.ChopsticksInitException;
-import com.github.ncdhz.cat.tool.util.FilePath;
+import com.github.ncdhz.cat.annotation.Bean;
+import com.github.ncdhz.cat.annotation.Primary;
+import com.github.ncdhz.cat.annotation.Component;
+import com.github.ncdhz.cat.annotation.Resource;
+import com.github.ncdhz.cat.util.Chopsticks;
+import com.github.ncdhz.cat.util.ChopsticksInitException;
+import com.github.ncdhz.cat.util.FilePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

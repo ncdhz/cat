@@ -1,7 +1,7 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
-import com.github.ncdhz.cat.tool.annotation.ScanPath;
-import com.github.ncdhz.cat.tool.util.FilePath;
+import com.github.ncdhz.cat.annotation.ScanPath;
+import com.github.ncdhz.cat.util.FilePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

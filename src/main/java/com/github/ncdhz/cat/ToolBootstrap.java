@@ -1,11 +1,8 @@
-package com.github.ncdhz.cat.tool;
+package com.github.ncdhz.cat;
 
-import com.github.ncdhz.cat.tool.core.LoadApplication;
-import com.github.ncdhz.cat.tool.util.FilePath;
+import com.github.ncdhz.cat.core.LoadApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Iterator;
 
 /**
  * 工具包的引导程序
@@ -48,7 +45,7 @@ public class ToolBootstrap {
             long timeS = System.nanoTime();
             logger.debug("Start tool cat path loading");
             Class<?> pClass = classLoader.loadClass(pathLoad);
-            LoadApplication  pathLoadObj = (LoadApplication)pClass.newInstance();
+            LoadApplication pathLoadObj = (LoadApplication)pClass.newInstance();
             pathLoadObj.run(clazz);
             pathLoadObj.run(ToolBootstrap.class);
             logger.debug("Tool cat path loading end");

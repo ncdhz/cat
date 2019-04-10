@@ -1,4 +1,4 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
 /**
  * 初始化不了就会抛此异常

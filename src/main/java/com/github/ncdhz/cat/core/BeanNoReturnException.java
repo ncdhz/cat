@@ -1,4 +1,4 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
 /**
  * 注解bean 注解的方法没有返回值

@@ -1,4 +1,4 @@
-package com.github.ncdhz.cat.tool.util;
+package com.github.ncdhz.cat.util;
 
 
 /**

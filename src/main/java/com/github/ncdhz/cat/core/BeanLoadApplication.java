@@ -1,4 +1,4 @@
-package com.github.ncdhz.cat.tool.core;
+package com.github.ncdhz.cat.core;
 
 /**
  * @author majunlong
