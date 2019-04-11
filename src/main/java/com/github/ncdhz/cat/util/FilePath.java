@@ -60,13 +60,14 @@ public class FilePath{
                 if(file1.isDirectory()){
 
                     File[] files = file1.listFiles();
-                    packagePath = packagePath+"."+file1.getName();
 
+                    StringBuilder packagePathSB = new StringBuilder();
+                    packagePathSB.append("".equals(packagePath)?"":packagePath+".");
+                    packagePathSB.append(file1.getName());
                     assert files != null;
                     linkedList.addAll(Arrays.asList(files));
                     for (File file2 : files) {
-
-                        linkedHashMap.put(file2,packagePath);
+                        linkedHashMap.put(file2,packagePathSB.toString());
                     }
                 }else {
                     setPath(file1,packagePath);

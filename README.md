@@ -3,18 +3,134 @@
 这是一个类容器
 内置了Bean，Component，Primary，Resource，RunMethod，ScanPath注解
 
+### @Component
+ 用在类上面含有此注解的类会被加载到cat的容器类里面通过 Chopsticks.getBean 可以获取
+ ```$xslt
+ import com.github.ncdhz.cat.CatBootstrap;
+ import com.github.ncdhz.cat.annotation.Component;
+ 
+ @Component
+ public class ComponentTest {
+     public ComponentTest(){
+         System.out.println("I loaded it into the cat container");
+     }
+     public static void main(String[] args){
+         CatBootstrap.run(ComponentTest.class);
+     }
+ }
+```
+
 ### @ScanPath
 此注解只能用于启动此框架的类上，用于指定额外需要扫描的包。如果没有指定默认只会扫描加载类的包下的所有类（包含包下包里面的类）。
+```$xslt
+import com.github.ncdhz.cat.annotation.Component;
 
-### @Component
-用在类上面含有此注解的类会被加载到cat的容器类里面通过 Chopsticks.getBean 可以获取
+@Component
+public class ScanBean {
+    public ScanBean(){
+        System.out.println("I am 'ScanBean'");
+    }
+}
+```
+```$xslt
+package scan;
+
+import com.github.ncdhz.cat.CatBootstrap;
+import com.github.ncdhz.cat.annotation.ScanPath;
+
+@ScanPath(paths = "/")
+public class ScanPathTest {
+    public static void main(String[] args){
+        CatBootstrap.run(ScanPathTest.class);
+    }
+}
+```
 
 ### @Retention
 此注解用于注入类，含有此注解类属性，方法都会在cat容器中找到合适的类注入。
+含有@Retention的类必须能够在cat容器中找到，可以用@Component来加载类
+```$xslt
+public interface ResourceInterface {
+    void testResource();
+}
+```
+```$xslt
+import com.github.ncdhz.cat.annotation.Component;
+
+@Component
+public class ResourceImp implements ResourceInterface{
+
+    @Override
+    public void testResource() {
+        System.out.println("I am 'Resource'");
+    }
+}
+```
+```$xslt
+import com.github.ncdhz.cat.CatBootstrap;
+import com.github.ncdhz.cat.annotation.Component;
+import com.github.ncdhz.cat.annotation.Resource;
+
+@Component
+public class ResourceTest {
+    @Resource
+    private static ResourceInterface resource;
+
+    public static void main(String[] args){
+        CatBootstrap.run(ResourceTest.class);
+        resource.testResource();
+    }
+}
+```
 
 ### @Primary
 两个同父类的子类需要被注入时（也就是有@Retention修饰其父类属性）含有此注解的优先级最高如果都没有此注解默认加载cat容器中找到的第一个子类。
+```$xslt
+public interface PrimaryInterface {
+    void testPrimary();
+}
+```
+```$xslt
+import com.github.ncdhz.cat.annotation.Component;
+import com.github.ncdhz.cat.annotation.Primary;
 
+@Component
+@Primary
+public class PrimaryImp1 implements PrimaryInterface{
+    @Override
+    public void testPrimary() {
+        System.out.println("I am 'Primary1");
+    }
+}
+```
+```$xslt
+import com.github.ncdhz.cat.annotation.Component;
+
+@Component
+public class PrimaryImp2 implements PrimaryInterface{
+    @Override
+    public void testPrimary() {
+        System.out.println("I am 'Primary2");
+    }
+}
+```
+```$xslt
+import com.github.ncdhz.cat.CatBootstrap;
+import com.github.ncdhz.cat.annotation.Component;
+import com.github.ncdhz.cat.annotation.Resource;
+
+@Component
+public class PrimaryTest {
+
+    @Resource
+    private static PrimaryInterface primary;
+
+    public static void main(String[] args){
+        CatBootstrap.run(PrimaryTest.class);
+        primary.testPrimary();
+    }
+}
+```
 ### @Bean
 用在方法上 并把方法的返回值保存在cat的容器类里面通过 Chopsticks.getBean 可以获取。用@Bean修饰的类可以含有一个参数，
 含有参数时该方法需要被@Retention注解。含有@Bean的类必须能够在cat容器中找到，可以用@Component来加载类

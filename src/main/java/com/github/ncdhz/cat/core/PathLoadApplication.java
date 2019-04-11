@@ -5,6 +5,8 @@ import com.github.ncdhz.cat.util.FilePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Iterator;
+
 /**
  * @author majunlong
  * 路径解析器
@@ -24,6 +26,8 @@ public class PathLoadApplication implements LoadApplication {
         String packagePath = clazz.getPackage()==null?"":clazz.getPackage().getName();
         loadCatScanPath(clazz);
         loadPath(path,packagePath);
+
+        Iterator<String> iterator = FilePath.iterator();
         logger.debug("{} Path parsing completed",clazz);
     }
 
